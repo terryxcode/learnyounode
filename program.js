@@ -1,9 +1,7 @@
-let filter = require('./mymodule');
-filter(process.argv[2], process.argv[3], ls);
-
-function ls(err, files) {
-    if (err) {
-        console.error(err);
+let http = require('http');
+http.get(process.argv[2],
+    res => {
+        res.setEncoding('utf8');
+        res.on('data', console.log).on('error', console.error);
     }
-    files.forEach(f => console.log(f));
-}
+).on('error', console.error);
