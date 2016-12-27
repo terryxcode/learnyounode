@@ -1,5 +1,3 @@
-let sum = 0;
-process.argv.slice(2).forEach(
-    n => sum += Number(n)
-);
-console.log(sum);
+let fs = require('fs');
+let lines = fs.readFileSync(process.argv[2]).toString().split('\n').length - 1;
+console.log(lines);
