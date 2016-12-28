@@ -1,7 +1,6 @@
-let net = require('net');
-let time = require('strftime');
+let http = require('http');
+let fs = require('fs');
 
-net.createServer(s => {
-    let data = time('%F %H:%M', new Date());
-    s.end(data + '\n');
+http.createServer((req, res) => {
+    fs.createReadStream(process.argv[3]).pipe(res);
 }).listen(process.argv[2]);
